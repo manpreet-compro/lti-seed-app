@@ -36,7 +36,7 @@ A folder to hold the configuration files of the application. Important configura
 
 
 ### /controllers
-A folder to hold application logic for API Requests.
+A folder to hold application logic for API Requests. All LTI specific functions are present in /lti sub-folder
 
 ### /views
 A folder holding server side rendered pages. For rendering, [Pug Template Engine](https://pugjs.org/api/getting-started.html) is used. 
