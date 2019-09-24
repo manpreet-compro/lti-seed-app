@@ -1,0 +1,7 @@
+{
+    "app": {
+        "title": "Seed Application",
+        "port":3000,
+        "secret":"app_secret"
+    }
+}

@@ -23,10 +23,15 @@
     "npm": "6.9.0"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "body-parser": "^1.19.0",
+    "config": "^3.2.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.16.2",
+    "hbs": "^4.0.4",
+    "helmet": "^3.21.1"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "author": "",
   "license": "ISC"
 }
