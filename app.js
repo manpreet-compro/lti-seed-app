@@ -8,6 +8,7 @@ const hbs = require( 'express-handlebars');
 
 const config = require('config');
 const appConfig = config.get('app');
+const routes = require('./routes/index.routes');
 
 const app = express();
 const port = process.env.PORT || appConfig.port;
@@ -63,14 +64,7 @@ app.use(session({
   }
 ))
 
-app.get('/', (req,res)=>{
-  res.render('home');
-})
-
-app.get('/session', (req,res)=>{
-  req.session.key1 = "value1"
-  res.json({session:req.session})
-})
+app.use(`/`, routes);
 
 app.listen(port,()=>{
   console.log(`${config.title} listening on port ${port}`);
