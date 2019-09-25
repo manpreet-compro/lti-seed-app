@@ -24,7 +24,7 @@
       "coverage/**/*.js"
     ],
    "reporter": [
-     "lcov",
+     "html",
      "text"
    ]
   },
