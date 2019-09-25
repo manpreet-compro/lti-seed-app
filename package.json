@@ -30,6 +30,7 @@
     "express-session": "^1.16.2",
     "hbs": "^4.0.4",
     "helmet": "^3.21.1",
+    "memorystore": "^1.6.1",
     "winston": "^3.2.1"
   },
   "devDependencies": {

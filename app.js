@@ -3,8 +3,10 @@ const createError = require('http-errors');
 const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
-const session = require('express-session');
 const hbs = require( 'express-handlebars');
+
+const session = require('express-session');
+const MemoryStore = require('memorystore')(session)
 
 const appConfig = require('config').get('app');
 const sessionConfig = require('config').get('session');
@@ -60,9 +62,14 @@ Add server session
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: sessionConfig.secret,
+    store: new MemoryStore({
+      checkPeriod: sessionConfig.expiry
+    }),
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 }
+    cookie: { 
+      maxAge: sessionConfig.cookie.maxAge
+    }
   }
 ))
 
