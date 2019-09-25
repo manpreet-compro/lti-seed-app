@@ -14,20 +14,6 @@
     "NodeJS",
     "Seed-app"
   ],
-  "nyc": {
-    "all": true,
-    "include": [
-      "**/*.js"
-    ],
-    "exclude": [
-      "**/*.spec.js",
-      "coverage/**/*.js"
-    ],
-   "reporter": [
-     "html",
-     "text"
-   ]
-  },
   "scripts": {
     "start": "node app.js",
     "test": "mocha test/**/*.spec.js --exit",

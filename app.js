@@ -76,7 +76,6 @@ app.use(session({
 app.use(`/`, routes);
 
 app.listen(port,()=>{
-  // console.log(`${config.title} listening on port ${port}`);
   logger.info(`${appConfig.title} listening on port ${port}`)
 })
 
