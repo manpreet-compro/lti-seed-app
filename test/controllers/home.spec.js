@@ -12,7 +12,7 @@ describe('Home Controller', ()=>{
             return request(app)
               .get('/home')
               .then((res)=>{
-                  expect(res.status).equal(200);
+                  expect(res.status).to.equal(200);
               })
         });
 
@@ -30,7 +30,7 @@ describe('Home Controller', ()=>{
             };
 
             homeController.renderHomePage(request, response);
-            expect(output.name).equal("home")
+            expect(output.name).to.equal("home")
         });
     });
 });
