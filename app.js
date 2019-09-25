@@ -6,9 +6,11 @@ const path = require('path');
 const session = require('express-session');
 const hbs = require( 'express-handlebars');
 
-const config = require('config');
-const appConfig = config.get('app');
+const appConfig = require('config').get('app');
+const sessionConfig = require('config').get('session');
+
 const routes = require('./routes/index.routes');
+const logger = require('./helpers/logger')
 
 const app = express();
 const port = process.env.PORT || appConfig.port;
@@ -57,7 +59,7 @@ Add server session
 */
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
-    secret: appConfig.secret,
+    secret: sessionConfig.secret,
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
@@ -67,7 +69,8 @@ app.use(session({
 app.use(`/`, routes);
 
 app.listen(port,()=>{
-  console.log(`${config.title} listening on port ${port}`);
+  // console.log(`${config.title} listening on port ${port}`);
+  logger.info(`${appConfig.title} listening on port ${port}`)
 })
 
 module.exports = app;

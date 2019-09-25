@@ -17,6 +17,8 @@ describe('Home Controller', ()=>{
         });
 
         it('should render home page', ()=>{
+            let output = {};
+
             let request = {};
             let response = {
                 viewName: "", 
@@ -26,7 +28,6 @@ describe('Home Controller', ()=>{
                     output.data = data;
                 }
             };
-            let output = {}
 
             homeController.renderHomePage(request, response);
             expect(output.name).equal("home")

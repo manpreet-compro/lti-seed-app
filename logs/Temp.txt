@@ -1,1 +1,1 @@
-Temp file for folder commit
+Directory to hold the logs

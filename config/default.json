@@ -1,7 +1,12 @@
 {
     "app": {
         "title": "Seed Application",
-        "port":3000,
+        "port":3000
+    },
+    "session":{
         "secret":"app_secret"
+    },
+    "logger":{
+        "directory":"logs"
     }
 }
