@@ -14,9 +14,23 @@
     "NodeJS",
     "Seed-app"
   ],
+  "nyc": {
+    "all": true,
+    "include": [
+      "**/*.js"
+    ],
+    "exclude": [
+      "**/*.spec.js"
+    ],
+   "reporter": [
+     "lcov",
+     "text"
+   ]
+  },
   "scripts": {
     "start": "node app.js",
-    "test": "mocha test/**/*.spec.js --exit"
+    "test": "mocha test/**/*.spec.js --exit",
+    "coverage": "nyc npm run test"
   },
   "engines": {
     "node": "10.16.0",
@@ -36,6 +50,7 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "mocha": "^6.2.0",
+    "nyc": "^14.1.1",
     "supertest": "^4.0.2"
   },
   "author": "",

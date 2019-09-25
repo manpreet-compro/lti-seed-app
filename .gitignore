@@ -6,3 +6,7 @@ node_modules/
 
 #log files
 *.log
+
+#nyc
+.nyc_output/
+coverage/
