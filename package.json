@@ -20,7 +20,8 @@
       "**/*.js"
     ],
     "exclude": [
-      "**/*.spec.js"
+      "**/*.spec.js",
+      "coverage/**/*.js"
     ],
    "reporter": [
      "lcov",
