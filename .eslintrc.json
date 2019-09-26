@@ -8,7 +8,7 @@
         "eslint:recommended", 
         "node", 
         "plugin:node/recommended",
-        "airbnb/base"
+        "airbnb-base"
     ],
     "globals": {
         "Atomics": "readonly",
