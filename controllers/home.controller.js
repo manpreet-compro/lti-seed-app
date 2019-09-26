@@ -4,7 +4,7 @@ exports.renderHomePage = (req, res) => {
     
     let param = {
         "foo": "value",
-        "bar": 11
+        "bar": 1
     };
     let isValid = renderHomePageValidator(param);
 
