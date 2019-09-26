@@ -1,3 +1,15 @@
+const {renderHomePageValidator} = require('../validators/home.validator');
+
 exports.renderHomePage = (req, res) => {
-    res.render('home');
+    
+    let param = {
+        "foo": "value",
+        "bar": 1
+    };
+    let isValid = renderHomePageValidator(param);
+
+    if(!isValid){
+        return res.status(400).send("Bad Request")
+    }
+    return res.render('home');
 };

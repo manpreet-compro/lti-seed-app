@@ -48,17 +48,14 @@ app.engine('hbs', hbs({
   defaultLayout: 'main'
 }));
 
-/* 
-Declaring Public folder for the app
-*/
+// Declaring Public folder for the app
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Set up body parser
 app.use(bodyParser.json({ limit: '1mb', type: '*/*' }));
 
-/*
-Add server session
-*/
+
+//Add server session
 app.set('trust proxy', 1) // trust first proxy
 app.use(session({
     secret: sessionConfig.secret,
@@ -73,8 +70,10 @@ app.use(session({
   }
 ))
 
+//Set up routing
 app.use(`/`, routes);
 
+//Start the server
 app.listen(port,()=>{
   logger.info(`${appConfig.title} listening on port ${port}`)
 })
