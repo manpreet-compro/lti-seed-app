@@ -6,7 +6,7 @@ const path = require('path');
 const hbs = require( 'express-handlebars');
 
 const session = require('express-session');
-const MemoryStore = require('memorystore')(session)
+const MemoryStore = require('memorystore')(session) //Use better version of memorystore, https://www.npmjs.com/package/memorystore
 
 const appConfig = require('config').get('app');
 const sessionConfig = require('config').get('session');

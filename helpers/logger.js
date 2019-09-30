@@ -1,33 +1,55 @@
+const fs = require('fs');
 const path = require('path');
-const winston = require('winston');
+const { createLogger, format, transports } = require('winston');
 const loggerConfig = require('config').logger
 
-const logger = winston.createLogger({
+const logDir = loggerConfig.dirPath;
+if (!fs.existsSync(logDir)){
+    fs.mkdirSync(logDir); //sync function during startup
+}
+
+const logger = createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: format.combine(
+    format.timestamp({
+      format: 'YYYY-MM-DD HH:mm:ss'
+    }),
+    format.errors({ stack: true }),
+    format.json()
+  ),
   transports: [
     //
     // - Write to all logs with level `info` and below to `combined.log` 
     // - Write all logs error (and below) to `error.log`.
     //
-    new winston.transports.File({ 
-        filename: path.join(loggerConfig.directory, 'error.log'), 
-        level: 'error' 
+    new transports.File({ 
+        filename: path.join(logDir, 'error.log'), 
+        level: 'error',
+        maxsize: 100000 //100 KB
     }),
-    new winston.transports.File({ 
-        filename: path.join(loggerConfig.directory, 'combined.log'), 
+    new transports.File({ 
+        filename: path.join(logDir, 'info.log'), 
+        maxsize: 100000 //100 KB
+    })
+  ],
+  exceptionHandlers: [
+    new transports.File({ 
+      filename: path.join(logDir, 'exceptions.log')
     })
   ]
 });
 
-//
-// If we're not in production then log to the `console` with the format:
-// `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-// 
+// If we're not in production then log to the `console`
 if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: winston.format.simple()
+  logger.add(new transports.Console({
+    format: format.combine(
+      format.colorize({ all: true }),
+      format.simple()
+    )
   }));
 }
+
+logger.info('This is an information message.'); //To test info
+logger.error('To check error file'); //To test error
 
 module.exports = logger;

@@ -11,6 +11,6 @@
         }
     },
     "logger":{
-        "directory":"logs"
+        "dirPath":"../logs"
     }
 }
