@@ -16,6 +16,7 @@
   ],
   "scripts": {
     "start": "node app.js",
+    "start:dev": "nodemon --exec npm start",
     "test": "mocha test/**/*.spec.js --exit",
     "coverage": "nyc npm run test"
   },
@@ -39,6 +40,7 @@
     "chai": "^4.2.0",
     "husky": "^3.0.5",
     "mocha": "^6.2.0",
+    "nodemon": "^1.19.3",
     "nyc": "^14.1.1",
     "supertest": "^4.0.2"
   },

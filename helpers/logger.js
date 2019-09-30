@@ -49,7 +49,4 @@ if (process.env.NODE_ENV !== 'production') {
   }));
 }
 
-logger.info('This is an information message.'); //To test info
-logger.error('To check error file'); //To test error
-
 module.exports = logger;
