@@ -30,41 +30,45 @@ npm start
 ## Project Structure
 
 ### /config
-A folder to hold the configuration files of the application. Important configurations are:
-* PORT - Default port of 3000 is used for express server. 
-* App Name - Specify the application name which is used as html title
-
+Folder having the configuration files for the application, e.g. application port, application name,  etc. The configurations will be managed based on environment with default file having common configuration, and environment specific configuration in specific file
 
 ### /controllers
-A folder to hold application logic for API Requests. All LTI specific functions are present in /lti sub-folder
+Folder for the controller files responsible for request handling and generation the required response containing the business logic.
+
+### /helpers
+Folder for common utility functions which can be used across controllers, e.g. logging or error handling
+
+### /routes 
+Folder defining the end points. There are multiple route files, e.g. home route files defining home routes and so on. For each route file, there will be a corresponding controller file in controllers folder
 
 ### /views
-A folder holding server side rendered pages. For rendering, [Pug Template Engine](https://pugjs.org/api/getting-started.html) is used. 
+Folder for keeping server side rendered files implemented using a template engine. For rendering, [Handlebars](https://github.com/wycats/handlebars.js) is being used. 
 
 ### /public
-A folder holding the static assets (imges, css )
+Folder for serving static files, e.g. image assets, stylesheets or client side javascript files. It can have different sub-folder for js, css, img, fonts etc
 
 ### /data
-A folder holding the json data for courses, resource links and users
+A folder having static json data for courses, resource links and users etc which will be required for implementing tool or platform initially till datastorage is integrated.
 
 ### /tests
-
 A folder holding the spec file containing unit test cases. Whenever a new functionality is added or existing one is modified, corresponding unit test should also be updated
 
 ## Packages used
 * dependencies 
-	* Express (x.y.z) - For node server
-	* express-validator ??
-	* Template engine - Pug ?
-	* Bootstrap - for styling
-	* Jsonwebtoken (x.y.z) - For creating or verifying jwt token
-	* PM2 (x.y.z) - process manager for node app
-	* winston ?? 
-	* morgan ??
+	* [express](https://github.com/expressjs/express) - For running node server
+	* [ajv](https://github.com/epoberezkin/ajv) - For Request validations
+	* [body-parser](https://github.com/expressjs/body-parser) - For parsing incoming post request data
+	* [config](https://github.com/lorenwest/node-config) - To manage environment based config files 
+	* [express-session](https://github.com/expressjs/session) - For creating server side session
+	* [memorystore](https://www.npmjs.com/package/memorystore) - For saving session without datastore
+	* [hbs](https://github.com/pillarjs/hbs) - Handlebars Templating engine for server side views
+	* [express-handlebars](https://github.com/ericf/express-handlebars) - Integarting handlebars with express
+	* [helmet](https://github.com/helmetjs/helmet) - For securing app by setting http headers
+	* [winston](https://github.com/winstonjs/winston) - For logging
 * devDependencies - For development only
-	* test-runner (mocha??) (x.y.z) - For running unit tests
-	* test-spec (chai??) (x.y.z) - for writing unit tests
-	* test-coverage ( istanbul ??) - for unit test coverage
+	* [mocha](https://github.com/mochajs/mocha) - Testing Framework for running unit tests
+	* [chai](https://github.com/chaijs/chai) - Assertion library for writing unit tests
+	* [supertest](https://github.com/visionmedia/supertest) - For testing node js http requests
 	* eslint?? - for javascript linting and coding standards
 	* Nodemon ??
 
