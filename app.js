@@ -75,7 +75,7 @@ app.use(`/`, routes);
 
 //Start the server
 app.listen(port,()=>{
-  logger.info(`${appConfig.title} listening on port ${port}`)
+  console.log(`${appConfig.title} listening on port ${port}`)
 })
 
 module.exports = app;

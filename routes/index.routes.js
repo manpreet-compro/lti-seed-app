@@ -5,7 +5,7 @@ const HomeRoutes = require('./home.routes')
 Router.use('/home', HomeRoutes);
 
 Router.get('/', (req,res)=>{
-    res.send("App main!")
+    return res.render('index');
 })
 
 module.exports = Router;

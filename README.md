@@ -11,7 +11,7 @@ A javascript based application to create LTI 1.3 Compliant Tool. LTI 1.3 is late
 
 ```javascript
 # Clone the repository
-git clone https://github.com/<<repo-path>>.git myproject
+git clone https://gitlab.com/cup-lti-gateway/cup-lti-tool.git
 
 # Change directory
 cd myproject
@@ -21,6 +21,10 @@ npm install
 
 # Then simply start your app
 npm start
+
+# Run on localhost
+http://localhost:3000
+
 ```
 
 ## Project Structure
@@ -66,8 +70,7 @@ A folder defining the request schemas and validations.
 	* [chai](https://github.com/chaijs/chai) - Assertion library for writing unit tests
 	* [supertest](https://github.com/visionmedia/supertest) - For testing node js http requests
 	* [nyc](https://github.com/istanbuljs/nyc) - For Coverage testing
-	* [nodemon](https://github.com/remy/nodemon) - For dev server 
-	* [husky](https://github.com/typicode/husky) - For invoking git hooks
+	* [nodemon](https://github.com/remy/nodemon) - For dev server
 
 
 ## Logging Details

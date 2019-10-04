@@ -5,7 +5,7 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/manpreet-compro/lti-seed-app.git"
+    "url": "https://gitlab.com/cup-lti-gateway/cup-lti-tool.git"
   },
   "keywords": [
     "LTI-1.3",
@@ -38,7 +38,6 @@
   },
   "devDependencies": {
     "chai": "^4.2.0",
-    "husky": "^3.0.5",
     "mocha": "^6.2.0",
     "nodemon": "^1.19.3",
     "nyc": "^14.1.1",

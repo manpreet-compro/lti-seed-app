@@ -11,5 +11,5 @@ exports.renderHomePage = (req, res) => {
     if(!isValid){
         return res.status(400).send("Bad Request")
     }
-    return res.render('home');
+    return res.json({"home":"valid"});
 };
