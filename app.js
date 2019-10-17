@@ -1,18 +1,17 @@
 const bodyParser = require('body-parser');
-const createError = require('http-errors');
 const express = require('express');
 const helmet = require('helmet');
 const path = require('path');
-const hbs = require( 'express-handlebars');
+const hbs = require('express-handlebars');
 
 const session = require('express-session');
-const MemoryStore = require('memorystore')(session) //Use better version of memorystore, https://www.npmjs.com/package/memorystore
+const MemoryStore = require('memorystore')(session); // Use better version of memorystore, https://www.npmjs.com/package/memorystore
 
 const appConfig = require('config').get('app');
 const sessionConfig = require('config').get('session');
 
 const routes = require('./routes/index.routes');
-const logger = require('./helpers/logger')
+const logger = require('./helpers/logger');
 
 const app = express();
 const port = process.env.PORT || appConfig.port;
@@ -21,20 +20,20 @@ const port = process.env.PORT || appConfig.port;
 To remove the X-Powered-By header.
 Refer https://helmetjs.github.io/docs/hide-powered-by/
 */
-app.use(helmet.hidePoweredBy())
+app.use(helmet.hidePoweredBy());
 
-/* 
+/*
 Enables XSS filtering and the browser will prevent rendering of the page if an attack is detected (by browser).
 Refer https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-XSS-Protection
 */
-app.use(helmet.xssFilter())
+app.use(helmet.xssFilter());
 
 
 /*
 Adding "X-Content-Type-Options: nosniff" header for protection against MIME type Sniffing attacks.
 Refer https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options and https://www.keycdn.com/support/what-is-mime-sniffing
 */
-app.use(helmet.noSniff())
+app.use(helmet.noSniff());
 
 /*
 view engine setup
@@ -55,27 +54,26 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json({ limit: '1mb', type: '*/*' }));
 
 
-//Add server session
-app.set('trust proxy', 1) // trust first proxy
+// Add server session
+app.set('trust proxy', 1); // trust first proxy
 app.use(session({
-    secret: sessionConfig.secret,
-    store: new MemoryStore({
-      checkPeriod: sessionConfig.expiry
-    }),
-    resave: false,
-    saveUninitialized: true,
-    cookie: { 
-      maxAge: sessionConfig.cookie.maxAge
-    }
+  secret: sessionConfig.secret,
+  store: new MemoryStore({
+    checkPeriod: sessionConfig.expiry
+  }),
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    maxAge: sessionConfig.cookie.maxAge
   }
-))
+}));
 
-//Set up routing
-app.use(`/`, routes);
+// Set up routing
+app.use('/', routes);
 
-//Start the server
-app.listen(port,()=>{
-  console.log(`${appConfig.title} listening on port ${port}`)
-})
+// Start the server
+app.listen(port, () => {
+  logger.info(`${appConfig.title} listening on port ${port}`);
+});
 
 module.exports = app;

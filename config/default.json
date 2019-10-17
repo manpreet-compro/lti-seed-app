@@ -1,6 +1,6 @@
 {
     "app": {
-        "title": "Seed Application",
+        "title": "LTI Seed App",
         "port":3000
     },
     "session":{
@@ -9,8 +9,5 @@
         "cookie":{
             "maxAge": 86400000
         }
-    },
-    "logger":{
-        "dirPath":"../logs"
     }
 }
